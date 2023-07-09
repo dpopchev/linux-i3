@@ -26,51 +26,48 @@ font pango:DejaVu Sans Mono 10
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-exec_always --no-startup-id $refresh_i3status
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec_always --no-startup-id xss-lock --transfer-sleep-lock -- bash ~/.dpopchev/lock.sh
-exec_always --no-startup-id killall xidlehook; bash ~/.dpopchev/start_xidlehook.sh
-bindsym $mod+BackSpace exec --no-startup-id xset s activate
+# exec_always --no-startup-id xss-lock --transfer-sleep-lock -- bash ~/.dpopchev/lock.sh
+# exec_always --no-startup-id killall xidlehook; bash ~/.dpopchev/start_xidlehook.sh
+# bindsym $mod+BackSpace exec --no-startup-id xset s activate
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec_always --no-startup-id nm-applet
-exec --no-startup-id killall redshift; redshift
-exec --no-startup-id /usr/bin/lxqt-policykit-agent
-exec_always --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ 1
-exec_always --no-startup-id setxkbmap -layout us,bg -option grp:alt_shift_toggle
-exec_always --no-startup-id killall xxkb; xxkb
-exec_always --no-startup-id sudo rmmod uvcvideo
-exec_always --no-startup-id killall dunst; dunst
-exec_always --no-startup-id autotiling --limit 2
+# exec_always --no-startup-id nm-applet
+# exec --no-startup-id killall redshift; redshift
+# exec --no-startup-id /usr/bin/lxqt-policykit-agent
+# exec_always --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ 1
+# exec_always --no-startup-id setxkbmap -layout us,bg -option grp:alt_shift_toggle
+# exec_always --no-startup-id killall xxkb; xxkb
+# exec_always --no-startup-id sudo rmmod uvcvideo
+# exec_always --no-startup-id killall dunst; dunst
+# exec_always --no-startup-id autotiling --limit 2
 # disable middle button click on the the trackpad
-exec_always --no-startup-id xinput set-button-map 11 1 0
+# exec_always --no-startup-id xinput set-button-map 11 1 0
 
 # audio control
-exec_always --no-startup-id start-pulseaudio-x11
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 100%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
-bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 50%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# exec_always --no-startup-id start-pulseaudio-x11
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+# bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 100%
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+# bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 50%
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
-bindsym Shift+XF86MonBrightnessDown exec --no-startup-id brightnessctl s 50%
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +5%
-bindsym Shift+XF86MonBrightnessUp exec --no-startup-id brightnessctl s 100%
+# bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
+# bindsym Shift+XF86MonBrightnessDown exec --no-startup-id brightnessctl s 50%
+# bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +5%
+# bindsym Shift+XF86MonBrightnessUp exec --no-startup-id brightnessctl s 100%
 
 # camera
-bindsym XF86Display exec --no-startup-id bash ~/.dpopchev/toggle_kernel_module.sh uvcvideo
-bindsym Shift+XF86Display exec --no-startup-id bash ~/.dpopchev/force_unload_camera.sh
+# bindsym XF86Display exec --no-startup-id bash ~/.dpopchev/toggle_kernel_module.sh uvcvideo
+# bindsym Shift+XF86Display exec --no-startup-id bash ~/.dpopchev/force_unload_camera.sh
 
 # tools
-bindsym XF86Tools exec --no-startup-id bash ~/.dpopchev/tools_dmenu.sh
+# bindsym XF86Tools exec --no-startup-id bash ~/.dpopchev/tools_dmenu.sh
 bindsym $mod+Shift+d exec --no-startup-id bash ~/.dpopchev/tools_dmenu.sh
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -218,20 +215,20 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $mode_display External Screen (c,C) USB-C ON/OFF
-mode "$mode_display" {
-    bindsym c exec --no-startup-id bash ~/.dpopchev/apply_xscreenlayout.sh 'DP-1' 'ON', mode "default"
-    bindsym Shift+c exec --no-startup-id bash ~/.dpopchev/apply_xscreenlayout.sh 'DP-1' 'OFF', mode "default"
-
-    # back to normal: Enter or Escape or $mod+r
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym XF86Favorites mode "default"
-}
-bindsym XF86Favorites mode "$mode_display"
-bindsym Shift+XF86Favorites exec --no-startup-id  xrandr --output eDP-1 --primary --auto --pos 0x0 \
-    --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --off
-
+# set $mode_display External Screen (c,C) USB-C ON/OFF
+# mode "$mode_display" {
+#     bindsym c exec --no-startup-id bash ~/.dpopchev/apply_xscreenlayout.sh 'DP-1' 'ON', mode "default"
+#     bindsym Shift+c exec --no-startup-id bash ~/.dpopchev/apply_xscreenlayout.sh 'DP-1' 'OFF', mode "default"
+#
+#     # back to normal: Enter or Escape or $mod+r
+#     bindsym Return mode "default"
+#     bindsym Escape mode "default"
+#     bindsym XF86Favorites mode "default"
+# }
+# bindsym XF86Favorites mode "$mode_display"
+# bindsym Shift+XF86Favorites exec --no-startup-id  xrandr --output eDP-1 --primary --auto --pos 0x0 \
+#     --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --off
+#
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
