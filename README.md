@@ -9,3 +9,7 @@ git clone https://github.com/dpopchev/linux-i3.git
 cd linux-i3
 make install
 ```
+
+## Dependencies
+
+- xss-lock
