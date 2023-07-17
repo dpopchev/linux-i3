@@ -13,3 +13,4 @@ make install
 ## Dependencies
 
 - xss-lock
+- gammastep
