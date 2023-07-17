@@ -14,3 +14,24 @@ make install
 
 - xss-lock
 - gammastep
+
+## Configs
+
+Scripts in current repo log trough `_i3_logger.sh`, which directs messages to `/var/log/syslog`
+and `~/.xsession-errors`.
+
+Find `i3` live logging into `run/user/USERNAME/i3/errorlog.I3PID`.
+
+### Laptop camera
+
+To hard enable/disable the laptop videocamera I just load/unload its modules
+runtime.
+
+Allow users of `wheel` group to do so by `visudo` and something like:
+
+```
+...
+## Same thing without a password
+%wheel ALL=(ALL:ALL) NOPASSWD: /sbin/rmmod uvcvideo, /sbin/modprobe uvcvideo
+...
+```
