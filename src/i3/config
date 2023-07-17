@@ -36,13 +36,38 @@ bindsym $mod+BackSpace exec --no-startup-id xset s activate
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 exec --no-startup-id gammastep -c ~/.config/redshift.conf
-exec_always --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ 1
-exec_always --no-startup-id sudo rmmod uvcvideo
 
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+exec --no-startup-id setxkbmap -layout us,bg -option grp:alt_shift_toggle
+exec --no-startup-id xxkb
+exec --no-startup-id dunst
+
+# disable middle button click on the the trackpad
+# exec_always --no-startup-id xinput set-button-map 11 1 0
+
+# audio control
+exec_always --no-startup-id start-pulseaudio-x11
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 100%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 50%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+exec_always --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ 1
+
+# brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -5
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id xbacklight -set 50
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +5
+bindsym Shift+XF86MonBrightnessUp exec --no-startup-id xbacklight -set 100
+
+# camera
+exec_always --no-startup-id sudo rmmod uvcvideo
+bindsym XF86Display exec --no-startup-id bash ~/.dpopchev/toggle_kernel_module.sh uvcvideo
+bindsym Shift+XF86Display exec --no-startup-id bash ~/.dpopchev/force_unload_camera.sh
+
+# tools
+# bindsym XF86Tools exec --no-startup-id bash ~/.dpopchev/tools_dmenu.sh
+bindsym $mod+Shift+d exec --no-startup-id bash ~/.dpopchev/tools_dmenu.sh
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -65,38 +90,42 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+# picture-in-pciture made visiable to all worskapces and without border
+for_window [title="Picture-in-Picture"] sticky enable
+for_window [title="Picture-in-Picture"] border pixel 0
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+default_border pixel 5
+smart_borders on
+
+set $aleft h
+set $adown j
+set $aup k
+set $aright l
+
+# change focus
+bindsym $mod+$aleft focus left
+bindsym $mod+$adown focus down
+bindsym $mod+$aup focus up
+bindsym $mod+$aright focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+$aleft move left
+bindsym $mod+Shift+$adown move down
+bindsym $mod+Shift+$aup move up
+bindsym $mod+Shift+$aright move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# toggle split direction for each window
+default_orientation auto
+# for_window [class="^"] split toggle
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+g split h
 
 # split in vertical orientation
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -109,11 +138,15 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
+# focus the parent/child container
 bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
 
-# focus the child container
-#bindsym $mod+d focus child
+# jump to urgent window
+# bindsym $mod+x [urgent=latest] focus
+
+# control focus follows mouse
+focus_follows_mouse no
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -167,16 +200,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym $aleft resize shrink width 10 px or 10 ppt
+        bindsym $aright resize grow height 10 px or 10 ppt
+        bindsym $aup resize shrink height 10 px or 10 ppt
+        bindsym $adown resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -186,6 +213,20 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+set $mode_display External Screen (c,C) USB-C ON/OFF
+mode "$mode_display" {
+    bindsym c exec --no-startup-id bash ~/.dpopchev/apply_xscreenlayout.sh 'DP-1' 'ON', mode "default"
+    bindsym Shift+c exec --no-startup-id bash ~/.dpopchev/apply_xscreenlayout.sh 'DP-1' 'OFF', mode "default"
+
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym XF86Favorites mode "default"
+}
+bindsym XF86Favorites mode "$mode_display"
+bindsym Shift+XF86Favorites exec --no-startup-id  xrandr --output eDP-1 --primary --auto --pos 0x0 \
+    --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --off
+#
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {

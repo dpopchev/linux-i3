@@ -14,6 +14,12 @@ make install
 
 - xss-lock
 - gammastep
+- setxkbmap
+- xxkb
+- dunst
+- xrandr
+- i3status
+- dmenu
 
 ## Configs
 
