@@ -13,8 +13,8 @@ for candidate in "${CMD_CANDIDATES[@]}"; do
 done
 
 case "$1" in
-    up) $backlight_cmd s +5%;;
-    down) $backlight_cmd s -5%;;
+    up) $backlight_cmd s 5%;;
+    down) $backlight_cmd s 5%-;;
     half) $backlight_cmd s 50%;;
     full) $backlight_cmd s 100%;;
     *) log_unhandled $backlight_cmd "did not manage subcmd" "$1";;
