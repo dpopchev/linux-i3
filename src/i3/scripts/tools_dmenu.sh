@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-tools_home="${HOME}/.dpopchev/tools"
+tools_home="${HOME}/.config/i3/scripts/tools"
 entries=()
 
 for entry in $tools_home/*; do
