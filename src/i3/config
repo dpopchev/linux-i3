@@ -44,12 +44,12 @@ bindsym Shift+XF86MonBrightnessDown exec --no-startup-id bash ~/.config/i3/scrip
 
 # camera
 exec_always --no-startup-id sudo rmmod uvcvideo
-bindsym XF86Display exec --no-startup-id bash ~/.dpopchev/toggle_kernel_module.sh uvcvideo
-bindsym Shift+XF86Display exec --no-startup-id bash ~/.dpopchev/force_unload_camera.sh
+bindsym XF86Display exec --no-startup-id bash ~/.config/i3/scripts/toggle_kernel_module.sh uvcvideo
+bindsym Shift+XF86Display exec --no-startup-id bash ~/.config/i3/scripts/force_unload_camera.sh
 
 # tools
 # bindsym XF86Tools exec --no-startup-id bash ~/.dpopchev/tools_dmenu.sh
-bindsym $mod+Shift+d exec --no-startup-id bash ~/.dpopchev/tools_dmenu.sh
+bindsym $mod+Shift+d exec --no-startup-id bash ~/.config/i3/scripts/tools_dmenu.sh
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
