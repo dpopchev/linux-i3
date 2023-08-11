@@ -18,6 +18,7 @@ font pango:DejaVu Sans Mono 10
 exec --no-startup-id bash ~/.config/i3/scripts/lock_before_suspend.sh
 bindsym $mod+BackSpace exec --no-startup-id xset s activate
 # exec --no-startup-id nm-applet
+exec --no-startup-id bash ~/.config/i3/scripts/disable_additional_screens.sh
 exec --no-startup-id bash ~/.config/i3/scripts/redshift.sh
 exec --no-startup-id setxkbmap -layout us,bg -option grp:alt_shift_toggle
 exec --no-startup-id xxkb
