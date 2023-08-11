@@ -77,7 +77,7 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 for_window [title="Picture-in-Picture"] sticky enable
 for_window [title="Picture-in-Picture"] border pixel 0
 
-default_border pixel 5
+default_border pixel 7
 smart_borders on
 
 set $aleft h
