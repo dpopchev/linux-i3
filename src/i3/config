@@ -24,9 +24,11 @@ exec_always --no-startup-id setxkbmap -layout us,bg -option grp:alt_shift_toggle
 exec --no-startup-id xxkb
 exec --no-startup-id dunst
 
+# the lines below is filterd with giignore comment as id may cahnge with device
 # disable middle button click on the the trackpad
-# the line is filterd with giignore comment as id may cahnge with device
 # exec --no-startup-id xinput set-button-map 11 1 0 3 4 5 6 7
+# disable kinetic/inertial/coasting scrolling
+# exec --no-startup-id xinput set-prop 11 337 0 0
 
 # audio control
 exec_always --no-startup-id start-pulseaudio-x11
