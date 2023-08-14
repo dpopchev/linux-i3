@@ -6,3 +6,4 @@ xinput set-prop $synaptics_id 'Synaptics ClickPad' 0
 xinput set-prop $synaptics_id 'Synaptics Click Action' 0 0 0
 xinput set-prop $synaptics_id 'Synaptics Palm Detection' 1
 xinput set-prop $synaptics_id 'Synaptics Coasting Speed' 0 0
+syndaemon -i 0.5 -K -R -d
