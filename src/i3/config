@@ -34,6 +34,8 @@ exec --no-startup-id dunst
 # 2 finger for right;
 # 3 finger for middle;
 # exec --no-startup-id xinput set-prop 11 330 0 0 0
+# disable touchpad on typing
+exec --no-startup-id syndaemon -i 0.5 -K -R
 
 # audio control
 exec_always --no-startup-id start-pulseaudio-x11
