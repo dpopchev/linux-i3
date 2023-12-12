@@ -12,7 +12,7 @@
 - imagemagic: import, convert
 - i3lock
 - xrandr
-<!-- - gammastep -->
+- gammastep
 <!-- - setxkbmap -->
 <!-- - xxkb -->
 <!-- - dunst -->

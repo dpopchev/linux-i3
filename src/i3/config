@@ -27,8 +27,7 @@ bindsym $mod+BackSpace exec --no-startup-id xset s activate
 # disable all monitors but the main
 exec --no-startup-id $INTRPR $SCRIPTS/disable_all_monitors_but.sh $MAIN_MONITOR
 
-# exec --no-startup-id bash ~/.config/i3/scripts/disable_additional_screens.sh
-# exec --no-startup-id bash ~/.config/i3/scripts/redshift.sh
+exec --no-startup-id $INTRPR $SCRIPTS/start_color_adjustment_service.sh
 # exec_always --no-startup-id setxkbmap -layout us,bg -option grp:alt_shift_toggle
 # exec --no-startup-id xxkb
 # exec --no-startup-id dunst
