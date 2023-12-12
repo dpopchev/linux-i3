@@ -11,6 +11,7 @@
 - xss-lock
 - imagemagic: import, convert
 - i3lock
+- xrandr
 <!-- - gammastep -->
 <!-- - setxkbmap -->
 <!-- - xxkb -->
@@ -33,8 +34,6 @@ Find `i3` logs into
 
 - `~/.xsession-errors`
 - `/run/user/$uid/i3/errlog.$pid`
-
-Find `i3` live logging into `run/user/USERNAME/i3/errorlog.I3PID`.
 
 ### Setup
 

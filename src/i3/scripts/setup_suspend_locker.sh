@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 
-xss-lock --transfer-sleep-lock -- $1 $2
+intrpr=${1-bash}
+locker=${2-i3lock}
+
+xss-lock --transfer-sleep-lock -- $intrpr $locker
