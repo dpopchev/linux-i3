@@ -24,7 +24,7 @@ set $MAIN_MONITOR eDP-1
 exec --no-startup-id $INTRPR $SCRIPTS/setup_suspend_locker.sh $INTRPR $SCRIPTS/lock.sh
 bindsym $mod+BackSpace exec --no-startup-id xset s activate
 
-# disable all but main monitor at start
+# disable all monitors but the main
 exec --no-startup-id $INTRPR $SCRIPTS/disable_all_monitors_but.sh $MAIN_MONITOR
 
 # exec --no-startup-id bash ~/.config/i3/scripts/disable_additional_screens.sh
