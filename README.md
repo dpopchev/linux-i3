@@ -13,10 +13,8 @@
 - i3lock
 - xrandr
 - gammastep
-<!-- - setxkbmap -->
-<!-- - xxkb -->
-<!-- - dunst -->
-<!-- - xrandr -->
+- xclip
+- xxkb
 <!-- - i3status -->
 <!-- - dmenu -->
 
