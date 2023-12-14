@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-acpi --ac-adapter | xargs -i notify-send {}
+notify-send "$(acpitool --ac_adapter)"
