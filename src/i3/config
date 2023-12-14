@@ -52,9 +52,9 @@ bindsym Shift+XF86MonBrightnessUp exec --no-startup-id $INTRPR $SCRIPTS/change_b
 bindsym Shift+XF86MonBrightnessDown exec --no-startup-id $INTRPR $SCRIPTS/change_backlight.sh set $QUICK_BRIGHTNESS_DECREASE
 
 # camera
-# exec_always --no-startup-id sudo rmmod uvcvideo
-# bindsym XF86Display exec --no-startup-id bash ~/.config/i3/scripts/toggle_kernel_module.sh uvcvideo
-# bindsym Shift+XF86Display exec --no-startup-id bash ~/.config/i3/scripts/force_unload_camera.sh
+exec --no-startup-id $INTRPR $SCRIPTS/unload_camera_module.sh
+bindsym XF86Display exec --no-startup-id $INTRPR $SCRIPTS/toggle_kernel_module.sh uvcvideo
+bindsym Shift+XF86Display exec --no-startup-id $INTRPR $SCRIPTS/unload_camera_module.sh
 
 # tools
 # bindsym XF86Tools exec --no-startup-id bash ~/.dpopchev/tools_dmenu.sh

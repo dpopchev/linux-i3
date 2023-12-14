@@ -40,7 +40,7 @@ Find `i3` logs into
 
 #### Laptop camera
 
-To hard enable/disable the laptop videocamera I just load/unload its modules
+To hard enable/disable the laptop camera I just load/unload its modules
 runtime.
 
 Allow users of `wheel` group to do so by `visudo` and something like:
