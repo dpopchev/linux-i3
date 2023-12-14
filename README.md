@@ -15,6 +15,9 @@
 - gammastep
 - xclip
 - xxkb
+- libnotify: notify-send
+- libpulse: pactl
+-
 <!-- - i3status -->
 <!-- - dmenu -->
 
