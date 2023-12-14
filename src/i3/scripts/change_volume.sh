@@ -19,7 +19,7 @@ make_delta() {
         return
     fi
 
-    if [[ $action == 'decrease' ]]; then
+    if [[ $action == 'dec' ]]; then
         echo "-$delta%"
         return
     fi
@@ -31,6 +31,15 @@ make_delta() {
 
     echo "+$delta%"
     return
+}
+
+make_action() {
+    case $1 in
+        set) echo set;;
+        inc) echo increase;;
+        dec) echo decrease;;
+        *) echo 'unknown';;
+    esac
 }
 
 delta=$(make_delta $action $delta)

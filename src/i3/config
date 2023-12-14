@@ -38,8 +38,8 @@ exec --no-startup-id $INTRPR $SCRIPTS/mute_volume.sh yes
 exec --no-startup-id $INTRPR $SCRIPTS/mute_mic.sh yes
 bindsym XF86AudioMute exec --no-startup-id $INTRPR $SCRIPTS/mute_volume.sh
 bindsym Shift+XF86AudioMute exec --no-startup-id $INTRPR $SCRIPTS/mute_volume.sh yes
-bindsym XF86AudioRaiseVolume exec --no-startup-id $INTRPR $SCRIPTS/change_volume.sh increase $VOLUME_STEP
-bindsym XF86AudioLowerVolume exec --no-startup-id $INTRPR $SCRIPTS/change_volume.sh decrease $VOLUME_STEP
+bindsym XF86AudioRaiseVolume exec --no-startup-id $INTRPR $SCRIPTS/change_volume.sh inc $VOLUME_STEP
+bindsym XF86AudioLowerVolume exec --no-startup-id $INTRPR $SCRIPTS/change_volume.sh dec $VOLUME_STEP
 bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id $INTRPR $SCRIPTS/change_volume.sh set $QUICK_VOLUME_INCREASE
 bindsym Shift+XF86AudioLowerVolume exec --no-startup-id $INTRPR $SCRIPTS/change_volume.sh set $QUICK_VOLUME_DECREASE
 bindsym XF86AudioMicMute exec --no-startup-id $INTRPR $SCRIPTS/mute_mic.sh

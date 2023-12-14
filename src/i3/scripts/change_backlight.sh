@@ -33,25 +33,15 @@ make_delta() {
 }
 
 make_action() {
-    local action=$1
-
-    if [[ $action == 'set' ]]; then
-        echo '-set'
-        return
-    fi
-
-    if [[ $action == 'inc' ]]; then
-        echo '-inc'
-        return
-    fi
-
-    if [[ $action == 'dec' ]]; then
-        echo '-dec'
-        return
-    fi
+    case $1 in
+        set) echo -set;;
+        inc) echo -inc;;
+        dec) echo -dec;;
+        *) echo 'unknown';;
+    esac
 }
 
 xbacklight $(make_action $action) $(make_delta $action $delta)
 
 brightness=$(get_brightness)
-notify-send "Volume: $brightness%" -h int:value:$brightness -h string:synchronous:brightness
+notify-send "Brightness: $brightness%" -h int:value:$brightness -h string:synchronous:brightness
