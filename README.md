@@ -20,6 +20,7 @@
 - acpilight: xbacklight
 - dmenu
 - i3status
+- nmcli
 
 ### Install
 
@@ -51,3 +52,8 @@ Allow users of `wheel` group to do so by `visudo` and something like:
 %wheel ALL=(ALL:ALL) NOPASSWD: /sbin/rmmod uvcvideo, /sbin/modprobe uvcvideo
 ...
 ```
+
+#### Wifi connections
+
+Users need be part of the `plugdev` group to use `nmcli` without elevating
+rights.
