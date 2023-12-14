@@ -18,6 +18,9 @@ font pango:DejaVu Sans Mono 10
 set $INTRPR bash
 set $SCRIPTS ~/.config/i3/scripts
 set $MAIN_MONITOR eDP-1
+set $VOLUME_STEP 5
+set $QUICK_VOLUME_INCREASE 100
+set $QUICK_VOLUME_DECREASE 50
 
 exec --no-startup-id $INTRPR $SCRIPTS/setup_suspend_locker.sh $INTRPR $SCRIPTS/lock.sh
 bindsym $mod+BackSpace exec --no-startup-id xset s activate
@@ -30,7 +33,10 @@ exec --no-startup-id xxkb
 # audio control
 bindsym XF86AudioMute exec --no-startup-id $INTRPR $SCRIPTS/mute_volume.sh
 bindsym Shift+XF86AudioMute exec --no-startup-id $INTRPR $SCRIPTS/mute_volume.sh yes
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioRaiseVolume exec --no-startup-id $INTRPR $SCRIPTS/change_volume.sh increase $VOLUME_STEP
+bindsym XF86AudioLowerVolume exec --no-startup-id $INTRPR $SCRIPTS/change_volume.sh decrease $VOLUME_STEP
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id $INTRPR $SCRIPTS/change_volume.sh set $QUICK_VOLUME_INCREASE
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id $INTRPR $SCRIPTS/change_volume.sh set $QUICK_VOLUME_DECREASE
 
 # bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 100%
 # bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
