@@ -56,9 +56,6 @@ exec --no-startup-id $INTRPR $SCRIPTS/unload_camera_module.sh
 bindsym XF86Display exec --no-startup-id $INTRPR $SCRIPTS/toggle_kernel_module.sh uvcvideo
 bindsym Shift+XF86Display exec --no-startup-id $INTRPR $SCRIPTS/unload_camera_module.sh
 
-# tools
-bindsym $mod+Shift+d exec --no-startup-id bash ~/.config/i3/scripts/tools_dmenu.sh
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -74,6 +71,8 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+Shift+d exec --no-startup-id bash ~/.config/i3/scripts/dmenu_tools.sh
+
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
