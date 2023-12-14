@@ -18,8 +18,8 @@
 - libnotify: notify-send
 - libpulse: pactl
 - acpilight: xbacklight
-<!-- - i3status -->
-<!-- - dmenu -->
+- dmenu
+- i3status
 
 ### Install
 

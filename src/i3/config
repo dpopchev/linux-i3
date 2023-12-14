@@ -57,8 +57,7 @@ bindsym XF86Display exec --no-startup-id $INTRPR $SCRIPTS/toggle_kernel_module.s
 bindsym Shift+XF86Display exec --no-startup-id $INTRPR $SCRIPTS/unload_camera_module.sh
 
 # tools
-# bindsym XF86Tools exec --no-startup-id bash ~/.dpopchev/tools_dmenu.sh
-# bindsym $mod+Shift+d exec --no-startup-id bash ~/.config/i3/scripts/tools_dmenu.sh
+bindsym $mod+Shift+d exec --no-startup-id bash ~/.config/i3/scripts/tools_dmenu.sh
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
