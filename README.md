@@ -1,6 +1,6 @@
 # linux-i3
 
-`i3` window manager configuration.
+Configuration for `i3` window manager.
 
 ## Installation
 
