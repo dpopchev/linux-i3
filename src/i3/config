@@ -46,10 +46,10 @@ bindsym XF86AudioMicMute exec --no-startup-id $INTRPR $SCRIPTS/mute_mic.sh
 bindsym Shift+XF86AudioMicMute exec --no-startup-id $INTRPR $SCRIPTS/mute_mic.sh yes
 
 # brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id $INTRPR $SCRIPTS/change_backlight.sh inc $BRIGHTNESS_STEP
-bindsym XF86MonBrightnessDown exec --no-startup-id $INTRPR $SCRIPTS/change_backlight.sh dec $BRIGHTNESS_STEP
-bindsym Shift+XF86MonBrightnessUp exec --no-startup-id $INTRPR $SCRIPTS/change_backlight.sh set $QUICK_BRIGHTNESS_INCREASE
-bindsym Shift+XF86MonBrightnessDown exec --no-startup-id $INTRPR $SCRIPTS/change_backlight.sh set $QUICK_BRIGHTNESS_DECREASE
+bindsym XF86MonBrightnessUp exec --no-startup-id $INTRPR $SCRIPTS/change_brightness.sh inc $BRIGHTNESS_STEP
+bindsym XF86MonBrightnessDown exec --no-startup-id $INTRPR $SCRIPTS/change_brightness.sh dec $BRIGHTNESS_STEP
+bindsym Shift+XF86MonBrightnessUp exec --no-startup-id $INTRPR $SCRIPTS/change_brightness.sh set $QUICK_BRIGHTNESS_INCREASE
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id $INTRPR $SCRIPTS/change_brightness.sh set $QUICK_BRIGHTNESS_DECREASE
 
 # camera
 exec --no-startup-id $INTRPR $SCRIPTS/unload_camera_module.sh
