@@ -57,3 +57,15 @@ Allow users of `wheel` group to do so by `visudo` and something like:
 
 Users need be part of the `plugdev` group to use `nmcli` without elevating
 rights.
+
+Quick connection shortcuts found with the mapping `$mod+Shift+d` use SSID names
+defined in the environment variables:
+
+```
+# cat ~/.profile
+...
+WIFI_PHONE=... # for connect_phone
+WIFI_HOME=...  # for connect_home
+WIFI_WORK=...  # for connect_work
+...
+```
